@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-top: 20px;
+            color: #333;
+        }
+        #destination {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #0080ff;
+        }
+        #itinerary {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body> 
+    <div class="container">
+        <h2>Your Destination</h2>
+        <div id="destination"></div>
+        <h2>Itinerary</h2>
+        <div id="itinerary"></div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Retrieve the budget from localStorage
+            var budget = localStorage.getItem("budget");
+
+            // Display the appropriate destination based on the budget range
+            var destination = "";
+            var itinerary = "";
+            if (budget >= 10000 && budget <= 20000) {
+                destination = "Delhi for 4 days";
+                itinerary = "Day 1: Arrival in Delhi, visit Red Fort<br>" +
+                            "Day 2: Explore Qutub Minar and Humayun's Tomb<br>" +
+                            "Day 3: Visit India Gate and Lotus Temple<br>" +
+                            "Day 4: Shopping and departure";
+            } else if (budget > 20000 && budget <= 50000) {
+                destination = "Kashmir for a week";
+                itinerary = "Day 1-2: Arrival in Srinagar, explore Dal Lake and Mughal Gardens<br>" +
+                            "Day 3-4: Visit Gulmarg for skiing and snowboarding<br>" +
+                            "Day 5-6: Explore Pahalgam and Betaab Valley<br>" +
+                            "Day 7: Departure from Srinagar";
+            } else if (budget > 50000 && budget <= 100000) {
+                destination = "Delhi to Ladakh Road Trip";
+                itinerary = "Day 1: Start from Delhi and drive to Manali<br>" +
+                            "Day 2: Explore Manali and acclimatize<br>" +
+                            "Day 3-5: Drive from Manali to Leh via Rohtang Pass and Keylong<br>" +
+                            "Day 6-7: Explore Leh and nearby attractions<br>" +
+                            "Day 8: Return journey to Delhi";
+            } else if (budget > 100000 && budget <= 500000) {
+                destination = "Get a blissful tour Of India";
+                itinerary = "Day 1: Start from Delhi and drive to Jaipur<br>" +
+                            "Day 2: Explore Jaipur, visit Amber Fort, City Palace, and Jantar Mantar<br>" +
+                            "Day 3: Drive from Jaipur to Agra, visit the Taj Mahal and Agra Fort<br>" +
+                            "Day 4: Drive from Agra to Varanasi<br>" +
+                            "Day 5: Explore Varanasi, visit the ghats, attend the Ganga Aarti<br>" +
+                            "Day 6: Travel from Varanasi to Kolkata<br>" +
+                            "Day 7: Explore Kolkata, visit Victoria Memorial, Howrah Bridge, and Dakshineswar Kali Temple<br>" +
+                            "Day 8: Return journey to Delhi";
+            } else if (budget > 500000) {
+                destination = "Spain";
+                itinerary = "Day 1-3: Arrival in Madrid, explore Prado Museum and Royal Palace<br>" +
+                            "Day 4-6: Visit Barcelona, explore Sagrada Familia and Park Güell<br>" +
+                            "Day 7-9: Relax in Costa del Sol<br>" +
+                            "Day 10: Departure from Spain";
+            } else {
+                destination = "Go For a world tour and Enjoy Life";
+            }
+
+            // Display the destination
+            document.getElementById("destination").textContent = "Your destination is: " + destination;
+
+            // Display the itinerary
+            document.getElementById("itinerary").innerHTML = "Itinerary:<br>" + itinerary;
+        });
+    </script>
+</body>
+</html>
